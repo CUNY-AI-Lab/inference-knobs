@@ -1,0 +1,139 @@
+/* Cognitive Knobs - Retro Studio Aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono:wght@400;700&family=Major+Mono+Display&display=swap');
+
+:root {
+  /* Retro Studio Color Palette */
+  --wood-dark: #2a1810;
+  --wood-medium: #4a2c1a;
+  --wood-light: #6b4226;
+  --cream: #f4e8d8;
+  --cream-dark: #e6d5c0;
+  --amber: #ff9500;
+  --amber-glow: rgba(255, 149, 0, 0.4);
+  --copper: #b87333;
+  --brass: #d4af37;
+  --led-red: #ff3030;
+  --led-green: #00ff88;
+  --steel: #8b90a3;
+  --steel-dark: #4a5060;
+
+  /* Typography */
+  --font-display: 'Orbitron', monospace;
+  --font-mono: 'Space Mono', monospace;
+  --font-title: 'Major Mono Display', monospace;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  --glow-amber: 0 0 20px var(--amber-glow), 0 0 40px var(--amber-glow);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: linear-gradient(135deg, var(--wood-dark) 0%, var(--wood-medium) 100%);
+  color: var(--cream);
+  min-height: 100vh;
+  padding: var(--space-xl);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08' /%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Main container */
+#app-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Utility classes */
+.text-display {
+  font-family: var(--font-display);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+.text-title {
+  font-family: var(--font-title);
+}
+
+.glow {
+  text-shadow: var(--glow-amber);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px var(--amber-glow));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px var(--amber-glow)) drop-shadow(0 0 24px var(--amber-glow));
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--wood-dark);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--copper);
+  border-radius: 6px;
+  border: 2px solid var(--wood-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brass);
+}
